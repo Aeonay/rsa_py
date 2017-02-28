@@ -54,12 +54,12 @@ The contrapositive, if we can find an a such that (1) and (2) are false, then
 p is not prime.
 
 #### Number of rounds
-[Cf. directly here][1]
+[Cf. directly here](http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes)
 
 
 *src:*
 - <http://sahandsaba.com/cryptography-rsa-part-1.html> 
 - <https://en.wikipedia.org/wiki/Prime_number_theorem>
 - <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>
-- [1]: <http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes>
+- <http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes>
 
