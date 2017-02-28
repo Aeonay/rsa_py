@@ -1,7 +1,7 @@
 # RSA python 2.7
 
 ## The cipher
-Let p and q be large primes. Let `n = pq` and `x = (p - 1)(q - 1)`.
+Let p and q be large primes, `n = pq` and `x = (p - 1)(q - 1)`.
 We find e such as gcd(e, x) = 1 (relativily prime to x). 
 
 Then, we compute the multiplicative inverse of e:
@@ -16,15 +16,15 @@ We thus have:
 
 ## Find a large random prime
 In order to find a big random prime, we need an efficient way. The prime number
-theorem states that there are \Pi(N) ~ N / ln(N), where \Pi(N) is the number of
+theorem states that there are `P(N) ~ N / ln(N)`, where P(N) is the number of
 prime numbers less or equal to N.
 
-Let r be a random prime number:
+Let r be a random prime number:</br>
 `P[r < N] = 1 / ln(N)`
 
 We can hope then to find a prime every ln(N/2), in other words: </br>
 around `N = 2^b` (for a large 2^b, say b = 8 for instance), we have a prime 
-roughly every b consecutive numbers (ln(2^b) / 2 : we get hence 50% chances).
+roughly every b consecutive numbers (ln(2^b) / 2 : we get hence 50% chances). </br>
 Now, these are probabilities and there are gaps of primes so we decide to
 generate a new number after testing 2b numbers consecutive to it.
 
@@ -54,12 +54,12 @@ The contrapositive, if we can find an a such that (1) and (2) are false, then
 p is not prime.
 
 #### Number of rounds
-
+[Cf. directly here][1]
 
 
 *src:*
 - <http://sahandsaba.com/cryptography-rsa-part-1.html> 
 - <https://en.wikipedia.org/wiki/Prime_number_theorem>
 - <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>
-- <http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes>
+- [1]: <http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes>
 

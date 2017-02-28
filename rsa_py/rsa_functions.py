@@ -70,7 +70,7 @@ def gen_prime(b):
     get_random_n = lambda: random.getrandbits(b) | 1 << b | 1
     p = get_random_n()
     for i in itertools.count(1):  # Infinite loop until we find a prime
-        if primality_test(p, 10):
+        if primality_test(p, 40):
             return p
         else:
             # Get a new random number, for probabilites are against us here
