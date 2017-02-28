@@ -1,23 +1,28 @@
 # RSA python 2.7
 
 ## The cipher
-Let p and q be large primes. Let n = pq and x = (p - 1)(q - 1).
+Let p and q be large primes. Let `n = pq` and `x = (p - 1)(q - 1)`.
 We find e such as gcd(e, x) = 1 (relativily prime to x). 
+
 Then, we compute the multiplicative inverse of e:
+```
     d = e (mod x) 
 <=> ed = 1 (mod x), 1 < d < x
-(e, n): pub key pair
-d: private key
-cipher = message^k mod(n)
+```
+We thus have: 
+- (e, n): pub key pair
+- d: private key
+- cipher = message^k mod(n)
 
 ## Find a large random prime
 In order to find a big random prime, we need an efficient way. The prime number
 theorem states that there are \Pi(N) ~ N / ln(N), where \Pi(N) is the number of
 prime numbers less or equal to N.
+
 Let r be a random prime number:
 `P[r < N] = 1 / ln(N)`
 
-We can hope then to find a prime every ln(N/2), in other words:
+We can hope then to find a prime every ln(N/2), in other words: </br>
 around `N = 2^b` (for a large 2^b, say b = 8 for instance), we have a prime 
 roughly every b consecutive numbers (ln(2^b) / 2 : we get hence 50% chances).
 Now, these are probabilities and there are gaps of primes so we decide to
@@ -26,17 +31,24 @@ generate a new number after testing 2b numbers consecutive to it.
 ### Primary test
 We use Rabin-Miller algorithm (otherwise, our RSA implementation would be
 terribly slow):
+
 In a finite field Z/pZ where p is prime, x^2 = 1 implies x = 1 or x = -1
 Rewritting this with modulos:
-x^2 = 1 (mod p) or
+```
+x^2 = 1 (mod p) or 
 (x - 1)(x + 1) = 0 (mod p)
+```
 
-Now, let p > 2 a prime, let s != 0 and d integers such that p - 1 = 2^s * d
+Now, let `p > 2` a prime, let `s != 0` and d integers such that `p - 1 = 2^s * d`
 So, for each a in (Z/pZ)*, by Fermat little theorem:
-a^(p - 1) = (a^d)^(2*s) = 1 (mod p)
+
+```a^(p - 1) = (a^d)^(2*s) = 1 (mod p)```
+
 and by taking repeatedly the square roots of a^(p - 1), we always get either:
+```
 a^d = 1 (mod p) (1) or
 a^(2^r * d) = -1 (mod p), for some 0 =< r < s (2)
+```
 
 The contrapositive, if we can find an a such that (1) and (2) are false, then
 p is not prime.
@@ -45,9 +57,9 @@ p is not prime.
 
 
 
-src:
-<http://sahandsaba.com/cryptography-rsa-part-1.html> 
-<https://en.wikipedia.org/wiki/Prime_number_theorem>
-<https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>
-<http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes>
+*src:*
+- <http://sahandsaba.com/cryptography-rsa-part-1.html> 
+- <https://en.wikipedia.org/wiki/Prime_number_theorem>
+- <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>
+- <http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes>
 
